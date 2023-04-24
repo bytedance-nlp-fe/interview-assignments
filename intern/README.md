@@ -11,6 +11,7 @@
 <img src="./demo.gif" width="400">
 
 ## 加分项
+
 - 可读的 Commit Message
 - 使用 TypeScript 编写
 - 支持键盘操作
