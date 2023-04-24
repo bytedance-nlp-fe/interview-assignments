@@ -8,7 +8,7 @@
 - 样式方案不限, 不要求像素级还原
 - 构建方案不限, 能使用 `npm start` 运行即可
 
-![demo.gif](./demo.gif)
+<img src="./demo.gif" width="400">
 
 ## 加分项
 - 可读的 Commit Message
@@ -18,4 +18,4 @@
 
 ## 其他
 
-请在面试前使用 Pull Request 提交你的代码
+请在正式面试前使用 Pull Request 提交你的代码
