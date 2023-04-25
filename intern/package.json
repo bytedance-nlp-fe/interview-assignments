@@ -1,7 +1,7 @@
 {
   "name": "intern",
   "scripts": {
-    "start": "echo 'todo'",
-    "test": "echo 'todo'"
+    "start": "vite",
+    "test": "vitest run"
   }
 }
