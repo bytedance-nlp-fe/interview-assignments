@@ -1,6 +1,6 @@
 export const menuItems = [
   {
-    title: 'Options',
+    menu: 'Options',
     submenu: [
       {
         title: 'New Tab',
@@ -9,15 +9,20 @@ export const menuItems = [
         title: 'New Window',
       },
       {
+      },
+      {
         title: 'Favorite',
         submenu: [
           {
+            icon: 'img/github.png',
             title: 'GitHub',
           },
           {
+            icon: 'img/stitches.png',
             title: 'Stitches',
           },
           {
+            icon: 'img/stitches.png',
             title: 'Twitter',
           },
         ],
@@ -26,10 +31,16 @@ export const menuItems = [
         title: 'Downloads',
       },
       {
+      },
+      {
         title: 'Show Toolbar',
+        checkable: true,
+        checked: true,
       },
       {
         title: 'Show Full URLs',
+        checkable: true,
+        checked: false,
       },
     ],
   }

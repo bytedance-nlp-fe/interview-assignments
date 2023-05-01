@@ -37,6 +37,7 @@ const MenuItems = ({ items, depthLevel }) => {
   };
 
   return (
+
     <li
       className="menu-items"
       ref={ref}
@@ -44,34 +45,41 @@ const MenuItems = ({ items, depthLevel }) => {
       onMouseLeave={onMouseLeave}
       onClick={closeDropdown}
     >
-      {items.submenu ? (
-        <>
-          <button
-            type="button"
-            aria-haspopup="menu"
-            aria-expanded={dropdown ? 'true' : 'false'}
-            onClick={() => setDropdown((prev) => !prev)}
-          >
-            {items.title}
-            {depthLevel > 0 ? (
-              <span>&raquo;</span>
-            ) : (
-              <span className="arrow" />
-            )}
-          </button>
+      {items.menu ? (
+        <div>
+          <div className='menu-item-container'><p className="menu-item">{items.menu}</p></div>
           <Dropdown
             depthLevel={depthLevel}
             submenus={items.submenu}
             dropdown={dropdown}
           />
-        </>
+        </div>
+      ) : !items.title ? (
+        <div class="end-section"></div>
+      ) : items.submenu ? (
+        <a href="#">
+          <span className="checked">&nbsp;</span>
+          <p className="topic">{items.title}</p>
+          <Dropdown
+            depthLevel={depthLevel}
+              submenus={items.submenu}
+            dropdown={dropdown}
+          />
+          <span className="submenu">&rsaquo;</span>
+          </a>
       ) : (
-        <button type="button" aria-haspopup="menu">
-            <div>{items.title}</div>
-        </button>
+        <a href="#">
+          {items.checkable && items.checked ? (
+            <span className="checked">&radic;</span>
+          ) : (
+            <span className="checked">&nbsp;</span>
+          )}
+          <p className="topic">{items.title}</p>
+          <span className="submenu">&nbsp;</span>
+        </a>
       )}
     </li>
-  );
-};
+  )
+}
 
 export default MenuItems;
