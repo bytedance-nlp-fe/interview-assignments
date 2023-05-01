@@ -14,15 +14,15 @@ export const menuItems = [
         title: 'Favorite',
         submenu: [
           {
-            icon: 'img/github.png',
+            icon: 'faGithub',
             title: 'GitHub',
           },
           {
-            icon: 'img/stitches.png',
+            icon: 'faComment',
             title: 'Stitches',
           },
           {
-            icon: 'img/stitches.png',
+            icon: 'faTwitter',
             title: 'Twitter',
           },
         ],

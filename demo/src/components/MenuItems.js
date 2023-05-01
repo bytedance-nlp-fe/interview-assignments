@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Dropdown from './Dropdown';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 const MenuItems = ({ items, depthLevel }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -71,6 +73,8 @@ const MenuItems = ({ items, depthLevel }) => {
         <a href="#">
           {items.checkable && items.checked ? (
             <span className="checked">&radic;</span>
+          ) : items.icon ? (
+            <FontAwesomeIcon icon={faTwitter} />
           ) : (
             <span className="checked">&nbsp;</span>
           )}
