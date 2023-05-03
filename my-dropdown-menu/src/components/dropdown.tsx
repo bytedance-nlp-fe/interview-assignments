@@ -4,7 +4,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import { SiGithub } from 'react-icons/si';
 import { RxStitchesLogo, RxTwitterLogo } from 'react-icons/rx'
-import { act } from 'react-dom/test-utils';
+import { BsCheck } from 'react-icons/bs'
 
 
 function classNames(...classes: (string | boolean)[]): string {
@@ -15,6 +15,7 @@ function classNames(...classes: (string | boolean)[]): string {
 export function Dropdown() {
   const [isFavoritesHovered, setIsFavoritesHovered] = useState(false);
   const [focusedElement, setFocusedElement] = useState('favorites');
+  const [checked, setChecked] = useState('showToolbar');
 
   const favoritesRef = React.useRef(null);
 
@@ -36,7 +37,7 @@ export function Dropdown() {
         setFocusedElement('download');
         console.log('focusedElement', focusedElement);
         console.log('isFavoritesHovered', isFavoritesHovered);
-      } 
+      }
 
       if (event.key === 'ArrowDown' && focusedElement === 'subMenuThirdItem') {
         event.preventDefault();
@@ -73,15 +74,17 @@ export function Dropdown() {
             <div className="py-1">
               <Menu.Item>
                 {({ active }: { active: boolean }) => (
-                  <a
-                    href="#"
+                  <div
                     className={classNames(
                       active ? 'bg-blue-400 text-gray-900' : 'text-gray-700',
                       'block px-4 py-2 text-sm'
                     )}
                   >
-                    New Type
-                  </a>
+                    <div className='flex flex-row '>
+                      <div className='w-6'>{checked === 'type' ? <BsCheck size="1.5em" color="black" /> : ''} </div>
+                      <div>New Type</div>
+                    </div>
+                  </div>
                 )}
               </Menu.Item>
               <Menu.Item>
@@ -93,9 +96,12 @@ export function Dropdown() {
                       active ? 'bg-blue-400 text-gray-900' : 'text-gray-700',
                       'block px-4 py-2 text-sm'
                     )}
-                    onFocus={() => { setFocusedElement('window'); console.log('focusedElement', focusedElement); }}
+                    onFocus={() => { setFocusedElement('window'); }}
                   >
-                    <div>New Windows</div>
+                    <div className='flex flex-row '>
+                      <div className='w-6'>{checked === 'window' ? <BsCheck size="1.5em" color="black" /> : ''} </div>
+                      <div>New Windows</div>
+                    </div>
                   </div>
                 )}
               </Menu.Item>
@@ -104,10 +110,10 @@ export function Dropdown() {
               <Menu.Item>
                 {({ active }: { active: boolean }) => (
                   <div
-                    onMouseEnter={() => { setIsFavoritesHovered(true); console.log('hovered'); }}
-                    onMouseLeave={() => { setIsFavoritesHovered(false); console.log('not hovered'); }}
+                    onMouseEnter={() => setIsFavoritesHovered(true)}
+                    onMouseLeave={() => setIsFavoritesHovered(false)}
                     ref={favoritesRef}
-                    onFocus={() => {setFocusedElement('favorites');}}
+                    onFocus={() => { setFocusedElement('favorites'); }}
                   >
                     <div
                       className={classNames(
@@ -115,9 +121,10 @@ export function Dropdown() {
                         'block px-4 py-2 text-sm'
                       )}
                     >
-                      <div className="grid gap-4 grid-cols-2">
-                        <a> Favorites</a>
-                        <a className="justify-self-end"><ChevronRightIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" /></a>
+                      <div className="flex flex-row">
+                        <div className='w-6'>{checked === 'favorites' ? <BsCheck size="1.5em" color="black" /> : ''} </div>
+                        <div> Favorites</div>
+                        <div className="justify-self-end"><ChevronRightIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" /></div>
                       </div>
 
                     </div>
@@ -126,8 +133,8 @@ export function Dropdown() {
               </Menu.Item>
               {isFavoritesHovered && (
                 <div
-                  onMouseEnter={() => { setIsFavoritesHovered(true); console.log('hovered'); }}
-                  onMouseLeave={() => { setIsFavoritesHovered(false); console.log('not hovered'); }}
+                  onMouseEnter={() => setIsFavoritesHovered(true)}
+                  onMouseLeave={() => setIsFavoritesHovered(false)}
                   className="absolute top-20 left-0 z-20 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                   style={{ marginLeft: '14rem' }}
                 >
@@ -209,7 +216,10 @@ export function Dropdown() {
                       'block px-4 py-2 text-sm'
                     )}
                   >
-                    <div onFocus={() => setFocusedElement('download')}>Download</div>
+                    <div className='flex flex-row '>
+                      <div className='w-6'>{checked === 'download' ? <BsCheck size="1.5em" color="black" /> : ''} </div>
+                      <div onFocus={() => setFocusedElement('download')}>Download</div>
+                    </div>
                   </a>
                 )}
               </Menu.Item>
@@ -217,51 +227,57 @@ export function Dropdown() {
             <div className="py-1">
               <Menu.Item>
                 {({ active }: { active: boolean }) => (
-                  <a
-                    href="#"
+                  <div
                     className={classNames(
                       active ? 'bg-blue-400 text-gray-900' : 'text-gray-700',
                       'block px-4 py-2 text-sm'
                     )}
                   >
-                    Show Toolbar
-                  </a>
+                    <div className='flex flex-row '>
+                      <div className='w-6'>{checked === 'showToolbar' ? <BsCheck size="1.5em" color="black" /> : ''} </div>
+                      <div>Show Toolbar</div>
+                    </div>
+                  </div>
                 )}
               </Menu.Item>
               <Menu.Item>
                 {({ active }: { active: boolean }) => (
-                  <a
-                    href="#"
+                  <div
                     className={classNames(
                       active ? 'bg-blue-400 text-gray-900' : 'text-gray-700',
                       'block px-4 py-2 text-sm'
                     )}
                   >
-                    Show Full URLs
-                  </a>
+                    <div className='flex flex-row '>
+                      <div className='w-6'>{checked === 'showFullUrl' ? <BsCheck size="1.5em" color="black" /> : ''} </div>
+                      <div>Show Full URLs</div>
+                    </div>
+                  </div>
                 )}
               </Menu.Item>
             </div>
             <div className="py-1">
               <Menu.Item>
                 {({ active }: { active: boolean }) => (
-                  <a
-                    href="#"
+                  <div
                     className={classNames(
                       active ? 'bg-blue-400 text-gray-900' : 'text-gray-700',
                       'block px-4 py-2 text-sm'
                     )}
                   >
-                    Delete
-                  </a>
+                    <div className='flex flex-row '>
+                      <div className='w-6'>{checked === 'delete' ? <BsCheck size="1.5em" color="black" /> : ''} </div>
+                      <div>Delete</div>
+                    </div>
+                  </div>
                 )}
               </Menu.Item>
             </div>
           </Menu.Items>
         </Transition>
-      </Menu>
+      </Menu >
 
-    </div>
+    </div >
   )
 }
 
