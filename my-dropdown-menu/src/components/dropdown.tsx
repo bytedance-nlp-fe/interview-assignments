@@ -9,6 +9,7 @@ function classNames(...classes: (string | boolean)[]): string {
 }
 
 export function Dropdown() {
+  const [isFavoritesHovered, setIsFavoritesHovered] = useState(false);
 
   return (
     <div className="relative inline-block text-left">
@@ -61,14 +62,67 @@ export function Dropdown() {
             <div className="py-1">
               <Menu.Item>
                 {({ active }: { active: boolean }) => (
-                  <a
+                  <div
+                    onMouseEnter={() => { setIsFavoritesHovered(true); console.log('hovered'); }}
+                    onMouseLeave={() => setIsFavoritesHovered(false)}
                     className={classNames(
-                      active ? 'bg-blue-400 text-gray-900' : 'text-gray-700',
+                      active && isFavoritesHovered ? 'bg-gray-100 text-gray-900' : active ? 'bg-blue-400 text-gray-900' : 'text-gray-700',
                       'block px-4 py-2 text-sm'
                     )}
                   >
-                    Favorites
-                  </a>
+                    <div className="grid gap-4 grid-cols-2">
+                      <a> Favorites</a>
+                      <a className="justify-self-end">&nbsp;&gt;</a>
+                    </div>
+                    {isFavoritesHovered && (
+                      <div
+                        onMouseEnter={() => setIsFavoritesHovered(true)}
+                        onMouseLeave={() => setIsFavoritesHovered(false)}
+                        className="absolute top-20 left-0 z-20 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        style={{ marginLeft: '14rem' }}
+                      >
+                        <div className="py-1">
+                          <Menu.Item>
+                            {({ active }: { active: boolean }) => (
+                              <a
+                                className={classNames(
+                                  active ? 'bg-blue-400 text-gray-900' : 'text-gray-700',
+                                  'block px-4 py-2 text-sm'
+                                )}
+                              >
+                              </a>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }: { active: boolean }) => (
+                              <a
+                                href="#"
+                                className={classNames(
+                                  active ? 'bg-blue-400 text-gray-900' : 'text-gray-700',
+                                  'block px-4 py-2 text-sm'
+                                )}
+                              >
+                                Submenu Item 2
+                              </a>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }: { active: boolean }) => (
+                              <a
+                                href="#"
+                                className={classNames(
+                                  active ? 'bg-blue-400 text-gray-900' : 'text-gray-700',
+                                  'block px-4 py-2 text-sm'
+                                )}
+                              >
+                                Submenu Item 3
+                              </a>
+                            )}
+                          </Menu.Item>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 )}
               </Menu.Item>
               <Menu.Item>
@@ -135,4 +189,6 @@ export function Dropdown() {
     </div>
   )
 }
+
+
 
