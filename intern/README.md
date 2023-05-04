@@ -2,7 +2,9 @@
 
 ## 题目
 
-使用 react 设计并实现 [demo.gif](./demo.gif) 演示的组件
+> 提示: 请重点考虑组件的可复用性
+
+使用 react **设计**并实现 [demo.gif](./demo.gif) 演示的菜单组件
 
 - 优先使用 `FunctionCompnent` 实现, 如果需要使用 `ClassComponent` 请说明原因
 - 样式方案不限, 不要求像素级还原
@@ -19,4 +21,4 @@
 
 ## 其他
 
-请在正式面试前使用 Pull Request 提交你的代码
+请在正式面试前使用 Pull Request 提交你的代码到 intern 目录下
