@@ -1,0 +1,186 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  width: 900px;
+  height: 900px;
+  background:linear-gradient(135deg,#f6d2e5,#d8e8ff);
+}
+
+.icon-xiangxia{
+  font-size: 12px;
+  font-weight: bolder;
+}
+.options{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  width: 120px;
+  height: 40px;
+  font-size:18px;
+  border: 2px solid gray;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.options:hover{
+ background-color: #fff;  
+ border: none;
+ cursor: pointer;
+}
+.pspan{
+  margin-right:10px;
+}
+.bardisplay{
+  display: block;
+  position: absolute;
+  padding: 0px;
+  width: 180px;
+  top:50%;
+  left:50%;
+  transform: translate(-25px,20px);
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: #fff;
+}
+ul{
+  list-style: none;
+  width: 100%;
+}
+ul li{
+  box-sizing: border-box;
+  width: 100%;
+   position: relative;
+  text-align: left;
+  padding-top: 10px;
+ padding-bottom: 5px;
+  font-size: 16px;
+  padding-left: 40px;
+}
+ul li:hover{
+ background-color: rgb(50, 50, 194);
+ color:white;
+ border-radius: 10px;
+ z-index: 999;
+}
+ul li:nth-of-type(3){
+  margin-top:15px;
+  position:relative;
+}
+ul li:nth-of-type(5){
+  margin-top:15px;
+}
+ul li:nth-of-type(6){
+  margin-bottom:15px;
+}
+ul li:nth-of-type(2)::after{
+  position: absolute;
+  left: 40px;
+  top:45px;
+content: '';
+width: 140px;
+height: 0.05em; 
+background:
+linear-gradient(135deg, transparent, transparent 45%, #008000, transparent 55%, transparent 100%),
+
+linear-gradient(45deg, transparent, transparent 45%, #008000, transparent 55%, transparent 100%);
+background-size: .1em .1em;
+ background-repeat: repeat-x, repeat-x;
+}
+ul li:nth-of-type(4)::after{
+  position: absolute;
+  left: 40px;
+  top:45px;
+content: '';
+width: 140px;
+height: 0.05em; 
+background:
+linear-gradient(135deg, transparent, transparent 45%, #008000, transparent 55%, transparent 100%),
+
+linear-gradient(45deg, transparent, transparent 45%, #008000, transparent 55%, transparent 100%);
+background-size: .1em .1em;
+ background-repeat: repeat-x, repeat-x;
+}
+.tick{
+position: absolute;
+font-size: 22px;
+left:12px;
+bottom: 8px;  
+z-index: 999;
+}
+
+.bardisplay:after{
+  position: absolute; content: ""; width: 10px; height: 10px; transform: rotate(45deg); 
+border-top: #fff 1px solid; 
+border-left: #fff 1px solid; 
+top: -6px; left: 50%; margin-left: -5px; z-index: 1;
+background-color: #fff;
+
+}
+.barnotdisplay{
+opacity: 0;
+}
+.icon-xiangyou1{
+  margin-left:30px;
+}
+.rightbar{
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  position:absolute;
+  left:178px;
+  top:86px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+ padding-bottom: 10px;
+ padding-top: 10px;
+ padding-left: 5px;
+ padding-right: 5px;
+}
+.rightbar div{
+  padding: 5px 5px 5px 5px;
+}
+.rightbar span{
+  font-size: 16px;
+  margin-left: 6px;
+  margin-right: 1px;
+}
+.rightbar i{
+  font-size:23px;
+  display: inline-block;
+  margin-top: 4px;
+}
+.icon-githublogo{
+  transform: translate(-5px,3px);
+}
+.icon-duigou{
+  transform: translate(-3px,3px);
+
+}
+.icon-twitter-fill{
+  transform: translate(-5px,3px);
+  
+}
+.stitch{
+  display: inline-block;
+  transform: translate(5px,0px);
+}
+.rightbar div:hover{
+  background-color: rgb(41, 41, 206);
+  color:white;
+  border-radius: 10px;
+}
+.last{
+  background-color: rgb(71, 71, 108,.2);
+  color:white;
+  border-radius: 10px;
+  z-index: 999;
+}
