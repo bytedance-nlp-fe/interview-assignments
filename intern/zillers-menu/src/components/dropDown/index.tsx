@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Menu } from "./Menu";
 import { MenuItem } from "./MenuItem";
 
 export const DropDown: React.FC<{}> = () => {
+  const [showDropDown, setShowDropDown] = useState(false);
+
   const menuItems = [
     {
       title: "New Tab",
-      onClick: () => {
-
-      }
+      onClick: () => { },
     },
     {
       title: "New Window",
@@ -17,16 +17,16 @@ export const DropDown: React.FC<{}> = () => {
       title: "Favorite",
       subMenuItems: [
         {
-          icon: 'faGithub',
-          title: 'GitHub',
+          icon: "faGithub",
+          title: "GitHub",
         },
         {
-          icon: 'faComment',
-          title: 'Stitches',
+          icon: "faComment",
+          title: "Stitches",
         },
         {
-          icon: 'faTwitter',
-          title: 'Twitter',
+          icon: "faTwitter",
+          title: "Twitter",
         },
       ],
     },
@@ -45,17 +45,28 @@ export const DropDown: React.FC<{}> = () => {
     },
   ];
 
+  const handleOnClick = () => {
+    setShowDropDown(!showDropDown);
+  };
+
+  const handleOnClose = () => {
+    setShowDropDown(false);
+  };
+
   return (
-    <Menu name="options" >
-      {
-        menuItems.map((item) => (<MenuItem
+    <Menu name="options" handleClick={handleOnClick} showDropDown={showDropDown}>
+      {menuItems.map((item) => (
+        <MenuItem
           title={item.title}
           isCheckAble={item.isCheckAble}
           isChecked={item.isChecked}
-          onClick={() => { item.onClick?.(); }}
+          handleClick={() => {
+            item.onClick?.();
+            handleOnClose();
+          }}
           subMenuItems={item.subMenuItems}
-        />))
-      }
+        />
+      ))}
     </Menu>
   );
 };

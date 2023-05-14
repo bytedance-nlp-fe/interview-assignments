@@ -3,14 +3,14 @@ import React from "react";
 type SubMenuItem = {
   title: string;
   icon: string | null;
-  onClick?: () => void;
+  handleClick?: () => void;
 }
 
 interface MenuItemProps {
   title: string;
   isCheckAble?: boolean;
   isChecked?: boolean;
-  onClick?: () => void;
+  handleClick: () => void;
   subMenuItems?: SubMenuItem[];
 };
 
@@ -18,10 +18,10 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   title,
   isCheckAble = false,
   isChecked,
-  onClick = () => { },
+  handleClick,
   subMenuItems,
 }) => {
   return (
-    <li>{title}</li>
+    <li onClick={handleClick}>{title}</li>
   );
 }
