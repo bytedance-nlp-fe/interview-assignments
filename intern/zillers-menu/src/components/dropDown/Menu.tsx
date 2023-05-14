@@ -1,8 +1,17 @@
 import React from "react";
 
-export const Menu: React.FC<{ name: string }> = ({ name }) => {
+interface MenuProps {
+  name: string;
+  children?: React.ReactNode;
+}
+
+export const Menu: React.FC<MenuProps> = ({ name, children }) => {
 
   return (
-    <button>{name}</button>
+    <>
+      <button>{name}</button>
+      {children}
+    </>
+
   );
 }

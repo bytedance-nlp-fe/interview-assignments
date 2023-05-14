@@ -46,8 +46,7 @@ export const DropDown: React.FC<{}> = () => {
   ];
 
   return (
-    <>
-      <Menu name="options" />
+    <Menu name="options" >
       {
         menuItems.map((item) => (<MenuItem
           title={item.title}
@@ -57,6 +56,6 @@ export const DropDown: React.FC<{}> = () => {
           subMenuItems={item.subMenuItems}
         />))
       }
-    </>
+    </Menu>
   );
 };

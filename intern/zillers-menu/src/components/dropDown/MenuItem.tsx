@@ -22,6 +22,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   subMenuItems,
 }) => {
   return (
-    <></>
+    <li>{title}</li>
   );
 }
