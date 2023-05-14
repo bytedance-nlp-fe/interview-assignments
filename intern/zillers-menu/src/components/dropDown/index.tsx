@@ -8,7 +8,7 @@ export const DropDown: React.FC<{}> = () => {
   const menuItems = [
     {
       title: "New Tab",
-      onClick: () => { },
+      onClick: () => {},
     },
     {
       title: "New Window",
@@ -19,14 +19,26 @@ export const DropDown: React.FC<{}> = () => {
         {
           icon: "faGithub",
           title: "GitHub",
+          handleClick: () => {
+            window.location.href = "https://github.com";
+            handleOnClose();
+          },
         },
         {
           icon: "faComment",
           title: "Stitches",
+          handleClick: () => {
+            window.location.href = "https://stitches.com";
+            handleOnClose();
+          },
         },
         {
           icon: "faTwitter",
           title: "Twitter",
+          handleClick: () => {
+            window.location.href = "https://twitter.com";
+            handleOnClose();
+          },
         },
       ],
     },
@@ -54,7 +66,11 @@ export const DropDown: React.FC<{}> = () => {
   };
 
   return (
-    <Menu name="options" handleClick={handleOnClick} showDropDown={showDropDown}>
+    <Menu
+      name="options"
+      handleClick={handleOnClick}
+      showDropDown={showDropDown}
+    >
       {menuItems.map((item) => (
         <MenuItem
           title={item.title}
@@ -62,7 +78,7 @@ export const DropDown: React.FC<{}> = () => {
           isChecked={item.isChecked}
           handleClick={() => {
             item.onClick?.();
-            handleOnClose();
+            !item.subMenuItems && handleOnClose();
           }}
           subMenuItems={item.subMenuItems}
         />
