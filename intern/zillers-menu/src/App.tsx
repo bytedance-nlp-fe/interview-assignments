@@ -1,11 +1,6 @@
-import React from 'react';
-import { DropDown } from './components/dropDown';
-import './App.css';
-
+import React from "react";
+import { DropDown } from "./components/dropDown";
 
 export const App: React.FC<{}> = () => {
-  return (
-    <DropDown />
-  );
-}
-
+  return <DropDown />;
+};

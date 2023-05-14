@@ -1,0 +1,82 @@
+li {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  list-style: none;
+  width: 200px;
+  height: 20px;
+  padding: 8px 0;
+}
+
+.arrow::after {
+  margin-left: 90px;
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  margin-right: 8px;
+  background-image: url("../../../public/arrow.png");
+  background-size: cover;
+}
+
+li:hover {
+  background-color: rgb(23, 125, 226);
+}
+
+.menuItem:nth-child(2n) {
+  border-bottom: 1px solid #ccc;
+}
+
+li::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  margin-right: 8px;
+}
+
+.Github::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  margin-right: 8px;
+  background-image: url("../../../public/github.png");
+  background-size: cover;
+}
+
+.Stitches::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  margin-right: 8px;
+  background-image: url("../../../public/apple.png");
+  background-size: cover;
+}
+
+.Twitter::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  margin-right: 8px;
+  background-image: url("../../../public/twitter.png");
+  background-size: cover;
+}
+
+.checked::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  margin-right: 8px;
+  background-image: url("../../../public/checked.png");
+  background-size: cover;
+}

@@ -17,7 +17,7 @@ export const DropDown: React.FC<{}> = () => {
       title: "Favorite",
       subMenuItems: [
         {
-          icon: "faGithub",
+          icon: "Github",
           title: "GitHub",
           handleClick: () => {
             window.location.href = "https://github.com";
@@ -25,7 +25,7 @@ export const DropDown: React.FC<{}> = () => {
           },
         },
         {
-          icon: "faComment",
+          icon: "Stitches",
           title: "Stitches",
           handleClick: () => {
             window.location.href = "https://stitches.com";
@@ -33,7 +33,7 @@ export const DropDown: React.FC<{}> = () => {
           },
         },
         {
-          icon: "faTwitter",
+          icon: "Twitter",
           title: "Twitter",
           handleClick: () => {
             window.location.href = "https://twitter.com";

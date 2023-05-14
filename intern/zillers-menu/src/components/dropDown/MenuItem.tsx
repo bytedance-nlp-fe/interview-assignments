@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import "./MenuItem.css";
 
 type SubMenuItem = {
   title: string;
-  icon: string | null;
+  icon?: string;
   handleClick?: () => void;
 };
 
@@ -20,7 +21,9 @@ const SubMenuItems: React.FC<{ subMenuItems: SubMenuItem[] }> = ({
   return (
     <>
       {subMenuItems.map((item) => (
-        <li onClick={item.handleClick}>{item.title}</li>
+        <li className={item.icon} onClick={item.handleClick}>
+          {item.title}
+        </li>
       ))}
     </>
   );
@@ -41,6 +44,9 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 
   return (
     <li
+      className={`menuItem ${subMenuItems ? "arrow" : ""} ${
+        isCheckAble && isChecked ? "checked" : ""
+      }`}
       onClick={() => {
         handleClick();
         subMenuItems && handleClickForSubMenu();
@@ -49,10 +55,11 @@ export const MenuItem: React.FC<MenuItemProps> = ({
       {subMenuItems ? (
         <div style={{ display: "flex", alignItems: "start" }}>
           <span>{title}</span>
-          showSubMenu
           <span
+            className="menuItemContainer"
             style={{
-              marginLeft: "20px",
+              position: "absolute",
+              marginLeft: "150px",
               display: showSubMenu ? "block" : "none",
             }}
           >
