@@ -4,6 +4,7 @@ import { Menu } from "./components/menu/menu.tsx";
 
 function App() {
   return <div className={styles.container}>
+    <h1 className={styles.h1}>Demo</h1>
     <div className={styles.card}>
       <Menu>
         <Menu.Button className={styles.button}>Options</Menu.Button>
@@ -18,12 +19,12 @@ function App() {
             <Menu.Item className={styles.item}>
               Favorites
             </Menu.Item>
-            <Menu.Item className={styles.item}>
+            <Menu.Item className={""}>
               <Menu>
                 <Menu.Hover className={styles.item}>
                   Downloads
                 </Menu.Hover>
-                <Menu.Items className={styles.items}>
+                <Menu.Items className={styles.subItems}>
                   <Menu.Item className={styles.item}>
                     GitHub
                   </Menu.Item>

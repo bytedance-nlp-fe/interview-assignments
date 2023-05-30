@@ -1,0 +1,14 @@
+html {
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* reset */
+button,
+p {
+  all: unset;
+}
