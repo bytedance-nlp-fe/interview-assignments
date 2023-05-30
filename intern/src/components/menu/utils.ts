@@ -1,5 +1,3 @@
-import React from "react";
-
 export const ID_PREFIX = "my_headless_menu_";
 export const DEBOUNCE = 300; // ms
 
@@ -9,6 +7,8 @@ export enum ActionTypes {
   GoToItem,
   IncreaseHoverCount,
   DecreaseHoverCount,
+  RegisterItem,
+  UnregisterItem,
 }
 
 export enum MenuStates {
@@ -36,16 +36,4 @@ export enum Keys {
   PageUp = "PageUp",
   PageDown = "PageDown",
   Tab = "Tab",
-}
-
-export function syncDivRef(ref: React.MutableRefObject<HTMLElement | null>) {
-  return (value: HTMLDivElement) => {
-    ref.current = value;
-  };
-}
-
-export function syncButtonRef(ref: React.MutableRefObject<HTMLElement | null>) {
-  return (value: HTMLButtonElement) => {
-    ref.current = value;
-  };
 }

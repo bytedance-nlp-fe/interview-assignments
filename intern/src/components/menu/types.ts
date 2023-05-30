@@ -13,7 +13,10 @@ export type Actions =
   type: ActionTypes.IncreaseHoverCount
 } | {
   type: ActionTypes.DecreaseHoverCount
-};
+} | { type: ActionTypes.RegisterItem; id: string; ref: React.MutableRefObject<HTMLElement | null> }
+  | {
+  type: ActionTypes.UnregisterItem; id: string;
+}
 
 export type StateContext = {
   activeItemIndex: number | null;

@@ -16,6 +16,7 @@ function App() {
             <Menu.Item className={styles.item}>
               New Window
             </Menu.Item>
+            <div className={styles.hr}></div>
             <Menu.Item className={styles.item}>
               Favorites
             </Menu.Item>
@@ -37,6 +38,7 @@ function App() {
                 </Menu.Items>
               </Menu>
             </Menu.Item>
+            <div className={styles.hr}></div>
             <Menu.Item className={styles.item}>
               Show Toolbar
             </Menu.Item>

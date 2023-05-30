@@ -69,5 +69,21 @@ export const reducers: {
       hoverCount: hoverCount,
       menuState: hoverCount > 0 ? MenuStates.Open : MenuStates.Closed
     };
+  },
+  [ActionTypes.RegisterItem]: (state, action) => {
+    const newItems = [
+      ...state.items,
+      { id: action.id, ref: action.ref }
+    ];
+    return { ...state, items: newItems };
+  },
+  [ActionTypes.UnregisterItem]: (state, action) => {
+    for (let i = 0; i < state.items.length; i++) {
+      if (state.items[i].id === action.id) {
+        state.items.splice(i, 1);
+        break;
+      }
+    }
+    return state;
   }
 };

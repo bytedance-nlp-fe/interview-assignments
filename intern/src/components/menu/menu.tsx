@@ -10,9 +10,9 @@
 
 import React from "react";
 import { Actions, ButtonProps, ItemProps, ItemsProps, MenuProps, StateContext } from "./types.ts";
-import { ActionTypes, Focus, ID_PREFIX, Keys, MenuStates, syncButtonRef, syncDivRef } from "./utils.ts";
+import { ActionTypes, Focus, ID_PREFIX, Keys, MenuStates } from "./utils.ts";
 import { reducers } from "./reducers.ts";
-import { useId } from "../../hooks/useId.ts";
+import { useSyncRefs } from "../../hooks/useSyncRef.ts";
 
 const MenuContext = React.createContext<[StateContext, React.Dispatch<Actions>] | null>(null);
 
@@ -38,7 +38,8 @@ function MenuRoot({ isOpened = false, ...props }: MenuProps) {
 // Button can either be triggered by clicking or hovering
 function Button(props: ButtonProps) {
   const [state, dispatch] = React.useContext(MenuContext) as [StateContext, React.Dispatch<Actions>];
-  const id = ID_PREFIX + useId();
+  const id = ID_PREFIX + React.useId();
+  const ref = useSyncRefs<HTMLElement>(state.itemsRef);
 
   function handleKeyDown(evt: React.KeyboardEvent) {
     switch (evt.key) {
@@ -85,7 +86,7 @@ function Button(props: ButtonProps) {
 
   return <button id={id}
                  className={props.className}
-                 ref={syncButtonRef(state.itemsRef)}
+                 ref={ref as (value: HTMLButtonElement) => void}
                  aria-haspopup={"menu"}
                  aria-controls={state.itemsRef.current?.id}
                  aria-expanded={state.menuState === MenuStates.Open}
@@ -98,7 +99,8 @@ function Button(props: ButtonProps) {
 
 function Hover(props: ButtonProps) {
   const [state, dispatch] = React.useContext(MenuContext) as [StateContext, React.Dispatch<Actions>];
-  const id = ID_PREFIX + useId();
+  const id = ID_PREFIX + React.useId();
+  const ref = useSyncRefs(state.itemsRef);
 
   function handleMouseEnter(evt: React.MouseEvent) {
     evt.preventDefault();
@@ -121,7 +123,7 @@ function Hover(props: ButtonProps) {
 
   return <div id={id}
               className={props.className}
-              ref={syncDivRef(state.itemsRef)}
+              ref={ref as (value: HTMLDivElement) => void}
               aria-haspopup={"menu"}
               aria-controls={state.itemsRef.current?.id}
               aria-expanded={state.menuState === MenuStates.Open}
@@ -134,7 +136,8 @@ function Hover(props: ButtonProps) {
 
 function Items(props: ItemsProps) {
   const [state, dispatch] = React.useContext(MenuContext) as [StateContext, React.Dispatch<Actions>];
-
+  const id = ID_PREFIX + React.useId();
+  const ref = useSyncRefs(state.itemsRef);
   // control focus
   React.useEffect(() => {
     const currentRef = state.itemsRef.current;
@@ -216,9 +219,9 @@ function Items(props: ItemsProps) {
     };
   }
 
-  return <div id={ID_PREFIX + useId()}
+  return <div id={id}
               className={props.className}
-              ref={syncDivRef(state.itemsRef)}
+              ref={ref as (value: HTMLDivElement) => void}
               onKeyDown={handleKeyDown}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -229,8 +232,15 @@ function Items(props: ItemsProps) {
 }
 
 function Item(props: ItemProps) {
-  const [state, dispatch] = React.useContext(MenuContext) as [StateContext, React.Dispatch<Actions>];
-  const id = ID_PREFIX + useId();
+  const [_, dispatch] = React.useContext(MenuContext) as [StateContext, React.Dispatch<Actions>];
+  const id = ID_PREFIX + React.useId();
+  const internalItemRef = React.useRef<HTMLElement | null>(null);
+  const ref = useSyncRefs(internalItemRef);
+
+  React.useEffect(() => {
+    dispatch({ type: ActionTypes.RegisterItem, id: id, ref: internalItemRef });
+    return () => dispatch({ type: ActionTypes.UnregisterItem, id });
+  }, [dispatch, id, internalItemRef]);
 
   function handleClick(evt: React.MouseEvent) {
     evt.preventDefault();
@@ -253,9 +263,9 @@ function Item(props: ItemProps) {
     dispatch({ type: ActionTypes.GoToItem, focus: Focus.Nothing });
   }
 
-  return <div id={ID_PREFIX + useId()}
+  return <div id={id}
               className={props.className}
-              ref={syncDivRef(state.itemsRef)}
+              ref={ref as (value: HTMLDivElement) => void}
               onFocus={handleFocus}
               onClick={handleClick}
               onMouseEnter={handleMouseEnter}

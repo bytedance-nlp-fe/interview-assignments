@@ -57,13 +57,20 @@
 }
 
 .item {
-  padding: 0.5rem;
+  padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
 }
 
 .item:hover {
   background-color: #3e63dd;
   color: white;
+}
+
+.hr {
+  border-bottom: solid rgba(0, 0, 0, 0.1) 1px;
+  margin: 0.25rem 0.5rem;
 }
 
 
