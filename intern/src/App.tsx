@@ -8,7 +8,7 @@ function App() {
     <div className={styles.card}>
       <Menu>
         <Menu.Button className={styles.button}>Options</Menu.Button>
-        <Menu.Items className={styles.items}>
+        <Menu.Items className={styles.items} isHover={false}>
           <>
             <Menu.Item className={styles.item}>
               New Tab
@@ -24,7 +24,7 @@ function App() {
                 <Menu.Hover className={styles.item}>
                   Downloads
                 </Menu.Hover>
-                <Menu.Items className={styles.subItems}>
+                <Menu.Items className={styles.subItems} isHover={true}>
                   <Menu.Item className={styles.item}>
                     GitHub
                   </Menu.Item>

@@ -1,4 +1,4 @@
-import React, { MutableRefObject } from "react";
+import React from "react";
 import { ActionTypes, Focus, MenuStates } from "./utils.ts";
 
 // Actions are for reducer
@@ -9,13 +9,19 @@ export type Actions =
   | {
   type: ActionTypes.GoToItem
   focus: Exclude<Focus, Focus.Specific>
-}
+} | {
+  type: ActionTypes.IncreaseHoverCount
+} | {
+  type: ActionTypes.DecreaseHoverCount
+};
 
 export type StateContext = {
   activeItemIndex: number | null;
   menuState: MenuStates;
   items: { id: string; }[];
-  itemsRef: MutableRefObject<HTMLElement | null>,
+  itemsRef: React.MutableRefObject<HTMLElement | null>;
+  hoverCount: number;
+  // hoverCloseTimeout: ReturnType<typeof setTimeout>;
 }
 
 export type MenuProps = {
@@ -26,12 +32,17 @@ export type MenuProps = {
 export type ButtonProps = {
   children: React.ReactNode;
   className: string;
-  mode?: string;
+}
+
+export type HoverProps = {
+  children: React.ReactNode;
+  className: string;
 }
 
 export type ItemsProps = {
   children: React.ReactNode;
   className: string;
+  isHover: boolean; // distinguish Button items and Hover items
 }
 
 export type ItemProps = {

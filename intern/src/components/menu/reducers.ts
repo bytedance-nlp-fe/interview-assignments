@@ -16,6 +16,7 @@ export const reducers: {
     };
   },
   [ActionTypes.OpenMenu]: (state) => {
+    // if (state.hoverCloseTimeout) clearTimeout(state.hoverCloseTimeout);
     if (state.menuState === MenuStates.Open) return state;
     return {
       ...state,
@@ -51,6 +52,22 @@ export const reducers: {
     return {
       ...state,
       activeItemIndex
+    };
+  },
+  [ActionTypes.IncreaseHoverCount]: (state) => {
+    const hoverCount = state.hoverCount + 1;
+    return {
+      ...state,
+      hoverCount: hoverCount,
+      menuState: hoverCount > 0 ? MenuStates.Open : MenuStates.Closed
+    };
+  },
+  [ActionTypes.DecreaseHoverCount]: (state) => {
+    const hoverCount = state.hoverCount - 1;
+    return {
+      ...state,
+      hoverCount: hoverCount,
+      menuState: hoverCount > 0 ? MenuStates.Open : MenuStates.Closed
     };
   }
 };

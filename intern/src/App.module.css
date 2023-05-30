@@ -49,6 +49,7 @@
   position: absolute;
   margin-left: 8rem;
   padding: 0.5rem;
+  top: 20%;
 }
 
 .items, .subItems {

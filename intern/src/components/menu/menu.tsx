@@ -10,7 +10,7 @@
 
 import React from "react";
 import { Actions, ButtonProps, ItemProps, ItemsProps, MenuProps, StateContext } from "./types.ts";
-import { ActionTypes, ButtonModes, Focus, ID_PREFIX, Keys, MenuStates, syncButtonRef, syncDivRef } from "./utils.ts";
+import { ActionTypes, Focus, ID_PREFIX, Keys, MenuStates, syncButtonRef, syncDivRef } from "./utils.ts";
 import { reducers } from "./reducers.ts";
 import { useId } from "../../hooks/useId.ts";
 
@@ -26,7 +26,8 @@ function MenuRoot({ isOpened = false, ...props }: MenuProps) {
     activeItemIndex: null,
     menuState: isOpened ? MenuStates.Open : MenuStates.Closed,
     items: [],
-    itemsRef: React.createRef()
+    itemsRef: React.createRef(),
+    hoverCount: 0
   };
   const stateAndReducer = React.useReducer(reducer, defaultState);
   return <MenuContext.Provider value={stateAndReducer}>
@@ -35,7 +36,7 @@ function MenuRoot({ isOpened = false, ...props }: MenuProps) {
 }
 
 // Button can either be triggered by clicking or hovering
-function Button({ mode = ButtonModes.Click, ...props }: ButtonProps) {
+function Button(props: ButtonProps) {
   const [state, dispatch] = React.useContext(MenuContext) as [StateContext, React.Dispatch<Actions>];
   const id = ID_PREFIX + useId();
 
@@ -75,60 +76,60 @@ function Button({ mode = ButtonModes.Click, ...props }: ButtonProps) {
     }
   };
 
-  const handleMouseEnter = (evt: React.MouseEvent) => {
+  function handleFocus(evt: React.FocusEvent) {
     if (state.menuState === MenuStates.Closed) {
       evt.preventDefault();
       dispatch({ type: ActionTypes.OpenMenu });
     }
-  };
-
-  const handleMouseLeave = (evt: React.MouseEvent) => {
-    if (state.menuState === MenuStates.Open) {
-      evt.preventDefault();
-      dispatch({ type: ActionTypes.CloseMenu });
-    }
-  };
-
-  const handleFocus = (evt: React.FocusEvent) => {
-    if (state.menuState === MenuStates.Closed) {
-      evt.preventDefault();
-      dispatch({ type: ActionTypes.OpenMenu });
-    }
-  };
-
-  if (mode === ButtonModes.Hover) {
-    return <div id={id}
-                className={props.className}
-                ref={syncDivRef(state.itemsRef)}
-                aria-haspopup={"menu"}
-                aria-controls={state.itemsRef.current?.id}
-                aria-expanded={state.menuState === MenuStates.Open}
-                onKeyDown={handleKeyDown}
-                onFocus={handleFocus}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}>
-      {props.children}
-    </div>;
-  } else {
-    return <button id={id}
-                   className={props.className}
-                   ref={syncButtonRef(state.itemsRef)}
-                   aria-haspopup={"menu"}
-                   aria-controls={state.itemsRef.current?.id}
-                   aria-expanded={state.menuState === MenuStates.Open}
-                   onKeyDown={handleKeyDown}
-                   onFocus={handleFocus}
-                   onClick={handleClick}>
-      {props.children}
-    </button>;
   }
+
+  return <button id={id}
+                 className={props.className}
+                 ref={syncButtonRef(state.itemsRef)}
+                 aria-haspopup={"menu"}
+                 aria-controls={state.itemsRef.current?.id}
+                 aria-expanded={state.menuState === MenuStates.Open}
+                 onKeyDown={handleKeyDown}
+                 onFocus={handleFocus}
+                 onClick={handleClick}>
+    {props.children}
+  </button>;
 }
 
-// Hover returns a Button triggered by hovering
 function Hover(props: ButtonProps) {
-  return <Button {...props} mode={ButtonModes.Hover}>
+  const [state, dispatch] = React.useContext(MenuContext) as [StateContext, React.Dispatch<Actions>];
+  const id = ID_PREFIX + useId();
+
+  function handleMouseEnter(evt: React.MouseEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    dispatch({ type: ActionTypes.IncreaseHoverCount });
+  }
+
+  function handleMouseLeave(evt: React.MouseEvent) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    dispatch({ type: ActionTypes.DecreaseHoverCount });
+  }
+
+  function handleFocus(evt: React.FocusEvent) {
+    if (state.menuState === MenuStates.Closed) {
+      evt.preventDefault();
+      dispatch({ type: ActionTypes.OpenMenu });
+    }
+  }
+
+  return <div id={id}
+              className={props.className}
+              ref={syncDivRef(state.itemsRef)}
+              aria-haspopup={"menu"}
+              aria-controls={state.itemsRef.current?.id}
+              aria-expanded={state.menuState === MenuStates.Open}
+              onFocus={handleFocus}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}>
     {props.children}
-  </Button>;
+  </div>;
 }
 
 function Items(props: ItemsProps) {
@@ -199,10 +200,28 @@ function Items(props: ItemsProps) {
     }
   }
 
+  let handleMouseEnter = undefined;
+  let handleMouseLeave = undefined;
+
+  if (props.isHover) {
+    handleMouseEnter = (evt: React.MouseEvent) => {
+      evt.preventDefault();
+      evt.stopPropagation();
+      dispatch({ type: ActionTypes.IncreaseHoverCount });
+    };
+    handleMouseLeave = (evt: React.MouseEvent) => {
+      evt.preventDefault();
+      evt.stopPropagation();
+      dispatch({ type: ActionTypes.DecreaseHoverCount });
+    };
+  }
+
   return <div id={ID_PREFIX + useId()}
               className={props.className}
               ref={syncDivRef(state.itemsRef)}
               onKeyDown={handleKeyDown}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
               style={{ display: display }}
   >
     {props.children}
@@ -241,7 +260,6 @@ function Item(props: ItemProps) {
               onClick={handleClick}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-
   >
     {props.children}
   </div>;
