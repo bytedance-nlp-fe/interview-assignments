@@ -1,4 +1,4 @@
-import React, { MutableRefObject } from "react";
+import React from "react";
 
 export const ID_PREFIX = "my_headless_menu_";
 
@@ -48,8 +48,14 @@ export enum ButtonModes {
   Hover = "hover",
 }
 
-export function syncRef(ref: React.MutableRefObject<HTMLDivElement | null>) {
+export function syncDivRef(ref: React.MutableRefObject<HTMLElement | null>) {
   return (value: HTMLDivElement) => {
+    ref.current = value;
+  };
+}
+
+export function syncButtonRef(ref: React.MutableRefObject<HTMLElement | null>) {
+  return (value: HTMLButtonElement) => {
     ref.current = value;
   };
 }

@@ -15,7 +15,7 @@ export type StateContext = {
   activeItemIndex: number | null;
   menuState: MenuStates;
   items: { id: string; }[];
-  itemsRef: MutableRefObject<HTMLDivElement | null>,
+  itemsRef: MutableRefObject<HTMLElement | null>,
 }
 
 export type MenuProps = {
