@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import './item.less';
 import Expand from '../../assets/expand.svg?component';
 import TrueIcon from '../../assets/true.svg?component';
@@ -21,6 +21,17 @@ export type ItemProps = {
     render?: () => React.ReactNode
 }
 
+const SubItem = forwardRef<HTMLLIElement, SubItemProps>(({ label, key, onClick, icon }, ref) => {
+    return <li className="item" onClick={onClick} key={key} ref={ref}>
+        <span className='item-inner'>
+            <span className='item-leftIcon'>
+                {icon}
+            </span>
+            {label}
+        </span>
+    </li>
+})
+
 
 const Item = ({ icon, children, onClick, checked, label, key }: ItemProps) => {
     const [check, setCheck] = useState<boolean>(false);
@@ -34,12 +45,12 @@ const Item = ({ icon, children, onClick, checked, label, key }: ItemProps) => {
         const { x, y, height, width } = selectedRef.current?.getBoundingClientRect() || { x: 0, y: 0, height: 0, width: 0 };
         console.log(x, y, height, width);
         selectedRef.current?.style.setProperty('position', 'absolute');
-        selectedRef.current?.style.setProperty('left', `${width / 2}px`);
-        selectedRef.current?.style.setProperty('top', `${y}px`);
+        selectedRef.current?.style.setProperty('left', `${width + 48}px`);
+        selectedRef.current?.style.setProperty('top', `${height - 24}px`);
         selectedRef.current?.style.setProperty("display", open ? "block" : "none");
     }
 
-    const selectedRef = useRef<HTMLLIElement>(null);
+    const selectedRef = useRef<HTMLUListElement>(null);
     useEffect(() => {
         handleListPosition(isHovered && !!children);
     }, [isHovered, children]);
@@ -55,8 +66,8 @@ const Item = ({ icon, children, onClick, checked, label, key }: ItemProps) => {
             </span>
         </li>
         {
-            children && isHovered && <ul className="sub-item" >
-                {children.map((item, index) => <Item {...item} key={item.key || index} />)}
+            children && isHovered && <ul className="sub-item" ref={selectedRef}>
+                {children.map((item, index) => <SubItem {...item} key={item.key || index} />)}
             </ul>
         }
     </>;

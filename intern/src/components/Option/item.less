@@ -1,14 +1,16 @@
-.item{
+.item {
     border-radius: 3px;
     padding: 0px 8px;
     font-size: 0px;
     text-align: left;
-    &-leftIcon{
+
+    &-leftIcon {
         width: 0.8rem;
         font-size: 0.8rem;
         margin-right: 5px;
     }
-    &-inner{
+
+    &-inner {
         font-size: 0.8rem;
         user-select: none;
         display: inline-flex;
@@ -16,21 +18,31 @@
         align-items: center;
         justify-content: left;
     }
-    &-expand{
+
+    &-expand {
         position: absolute;
         right: 10px;
         font-size: 0.8rem;
     }
-    &:hover{
+
+    &:hover {
         background-color: #2A48D9;
         color: white;
     }
 }
-.sub-item{
+
+.sub-item {
     position: absolute;
     display: none;
-    display: inline-flex;
-    &-show{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 3px 3px;
+    border-radius: 5px;
+    list-style: none;
+
+    &-show {
         position: absolute;
         display: block;
     }
