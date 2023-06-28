@@ -1,11 +1,9 @@
-import { useState } from 'react'
 import './App.css'
 import Option from './components/Option';
 import { ItemProps } from './components/Option/item';
 import DropDownIcon from './assets/dropdown.svg?component';
 
 function App() {
-  const [count, setCount] = useState(0);
 
   const items: ItemProps[] = [
     {
@@ -31,7 +29,7 @@ function App() {
           icon: <DropDownIcon />,
         },
         {
-          label: 'Twittr',
+          label: 'Twitter',
           key: '3-3',
           icon: <DropDownIcon />,
         }
@@ -43,11 +41,13 @@ function App() {
     },
     {
       label: 'Show Toolbar',
-      key: '5'
+      key: '5',
+      checked: true,
     },
     {
       label: 'Show Full URLs',
-      key: '6'
+      key: '6',
+      checked: true,
     }
   ]
 

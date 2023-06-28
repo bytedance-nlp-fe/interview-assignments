@@ -1,7 +1,7 @@
 import './option.less';
-import React, { Ref, forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import DropDownIcon from '../../assets/dropdown.svg?component';
-import Item, { ItemProps } from './item';
+import Item, { ItemProps, SubItemProps } from './item';
 export type OptionProps = {
     children: string | React.ReactNode
     items?: ItemProps[]
@@ -11,6 +11,10 @@ export type OptionProps = {
 
 export type MenuListProps = {
     items?: ItemProps[]
+}
+
+export type SubMenuProps = {
+    items?: SubItemProps[]
 }
 
 export type ArrowQueueProps = {
@@ -50,15 +54,17 @@ const MenuList = forwardRef<HTMLUListElement, MenuListProps>(({ items }, ref) =>
             document.removeEventListener('keydown', handleKeyDown);
         }
     })
-    return <ul className="option-list" ref={ref}>
-        {items?.map((item, index) => <Item {...item} key={item.key || index} />)}
-    </ul>
+    return <>
+        <ul className="option-list" ref={ref}>
+            {items?.map((item, index) => <Item {...item} key={item.key || index} />)}
+        </ul>
+    </>
 })
 
 const Option = ({ children, openCallback, hiddenQueue, items }: OptionProps) => {
     const [open, setOpen] = useState(false);
     const buttonRef = useRef<HTMLDivElement>(null);
-    const arrowQueueRef = useRef<ArrowQueueProps>(null) as Ref<HTMLDivElement>;
+    const arrowQueueRef = useRef<ArrowQueueProps>(null);
     const listRef = useRef<HTMLUListElement>(null);
 
     const handleListPosition = (open: boolean) => {
@@ -83,7 +89,7 @@ const Option = ({ children, openCallback, hiddenQueue, items }: OptionProps) => 
             <DropDownIcon />
         </div>
         <MenuList ref={listRef} items={items} />
-        {hiddenQueue && <ArrowQueue ref={arrowQueueRef} />}
+        {hiddenQueue && <ArrowQueue />}
     </>
 }
 
