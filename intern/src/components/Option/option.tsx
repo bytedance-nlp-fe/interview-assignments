@@ -1,5 +1,5 @@
 import './option.less';
-import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, createContext, forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import DropDownIcon from '../../assets/dropdown.svg?component';
 import Item, { ItemProps, SubItemProps } from './item';
 export type OptionProps = {
@@ -17,13 +17,19 @@ export type SubMenuProps = {
     items?: SubItemProps[]
 }
 
-export type ArrowQueueProps = {
-}
+// type OptionContextProps = {
+//     expand: boolean
+//     setExpand: Dispatch<SetStateAction<boolean>>
+// }
 
-const ArrowQueue = forwardRef<HTMLDivElement, ArrowQueueProps>(({ }, ref) => {
-    useImperativeHandle(ref, () => ({}));
-    return <div className="arrow" ref={ref}></div>;
-})
+// const OptionContext = createContext<OptionContextProps>({} as OptionContextProps);
+// export type ArrowQueueProps = {
+// }
+
+// const ArrowQueue = forwardRef<HTMLDivElement, ArrowQueueProps>(({ }, ref) => {
+//     useImperativeHandle(ref, () => ({}));
+//     return <div className="arrow" ref={ref}></div>;
+// })
 
 const MenuList = forwardRef<HTMLUListElement, MenuListProps>(({ items }, ref) => {
     const [activeIndex, setActiveIndex] = useState<ItemProps['key']>(items?.length ? items[0].key : 0);
@@ -64,7 +70,7 @@ const MenuList = forwardRef<HTMLUListElement, MenuListProps>(({ items }, ref) =>
 const Option = ({ children, openCallback, hiddenQueue, items }: OptionProps) => {
     const [open, setOpen] = useState(false);
     const buttonRef = useRef<HTMLDivElement>(null);
-    const arrowQueueRef = useRef<ArrowQueueProps>(null);
+    // const arrowQueueRef = useRef<ArrowQueueProps>(null);
     const listRef = useRef<HTMLUListElement>(null);
 
     const handleListPosition = (open: boolean) => {
@@ -89,8 +95,8 @@ const Option = ({ children, openCallback, hiddenQueue, items }: OptionProps) => 
             <DropDownIcon />
         </div>
         <MenuList ref={listRef} items={items} />
-        {hiddenQueue && <ArrowQueue />}
+        {/* {hiddenQueue && <ArrowQueue />} */}
+
     </>
 }
-
 export default Option;
