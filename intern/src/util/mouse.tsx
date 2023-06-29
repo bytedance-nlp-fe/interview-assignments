@@ -1,6 +1,5 @@
 import { RefObject, useEffect, useRef, useState } from "react";
 
-
 const useMouseHover = <T extends HTMLElement>(): [RefObject<T>, boolean] => {
     const [isHovered, setIsHovered] = useState(false);
     const currentRef = useRef<T>(null);
