@@ -16,7 +16,8 @@ const DropdownButtonWrapper: React.FC<DropdownButtonWrapperProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const mainMenu = setAsMainMenu(children);
   const graph = generateItemsGraph(children);
-  const { keyBoardFocus, setKeyBoardFocus } = useDropdownButtonContext();
+  const { keyBoardFocus, setKeyBoardFocus, setMouseFocus } =
+    useDropdownButtonContext();
   const clonedChildren = isExpanded
     ? [button.props.children, mainMenu]
     : button.props.children;
@@ -31,7 +32,13 @@ const DropdownButtonWrapper: React.FC<DropdownButtonWrapperProps> = ({
         setIsExpanded(!isExpanded);
       },
       onKeyDown: (event: KeyboardEvent) => {
-        keyDownHandler(event, graph, keyBoardFocus, setKeyBoardFocus);
+        keyDownHandler(
+          event,
+          graph,
+          setMouseFocus,
+          keyBoardFocus,
+          setKeyBoardFocus,
+        );
       },
     },
     clonedChildren,
@@ -49,9 +56,11 @@ function setAsMainMenu(menu: ReactElement): ReactElement {
 function keyDownHandler(
   event: KeyboardEvent,
   graph: Item[],
+  setMouseFocus: (mouseFocus: string | null) => void,
   keyBoardFocus: Item | null,
   setKeyBoardFocus: (keyBoardFocus: Item | null) => void,
 ) {
+  setMouseFocus(null);
   const functionMap = {
     ArrowDown: () => {
       const currentFocus: Item | null = keyBoardFocus;

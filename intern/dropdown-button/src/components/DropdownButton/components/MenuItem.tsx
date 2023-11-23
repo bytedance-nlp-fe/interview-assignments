@@ -44,9 +44,10 @@ const MenuItem: React.FC<MenuItemProps> = ({
       }}
     >
       <div
-        onMouseEnter={() => {
+        onMouseMove={() => {
           setIsSubMenuExpanded(true);
           setMouseFocus(itemKey);
+          setKeyBoardFocus(null);
         }}
         onMouseLeave={() => {
           setMouseFocus(null);
