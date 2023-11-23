@@ -65,7 +65,6 @@ function keyDownHandler(
       setKeyBoardFocus(currentFocus.nextSibling);
     },
     ArrowUp: () => {
-      console.log('ArrowUp');
       const currentFocus: Item | null = keyBoardFocus;
       if (currentFocus === null) {
         return;
@@ -76,7 +75,6 @@ function keyDownHandler(
       setKeyBoardFocus(currentFocus.previousSibling);
     },
     ArrowLeft: () => {
-      console.log('ArrowLeft');
       const currentFocus: Item | null = keyBoardFocus;
       if (currentFocus === null) {
         return;
@@ -87,7 +85,6 @@ function keyDownHandler(
       setKeyBoardFocus(currentFocus.parent);
     },
     ArrowRight: () => {
-      console.log('ArrowRight');
       const currentFocus: Item | null = keyBoardFocus;
       if (currentFocus === null) {
         return;
