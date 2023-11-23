@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.3.0...0.3.1) (2023-11-23)
+
+
+### Bug Fixes
+
+* :bug: avoid multiple hilighted items, now keyboard and mouse can only hight one item at a time ([3062b7c](https://github.com/Fuzzyf-ace/interview-assignments/commit/3062b7c688a516d78eec3137281d5d084644badb))
+
+
+
 # [0.3.0](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.2.0...0.3.0) (2023-11-23)
 
 ### Features
