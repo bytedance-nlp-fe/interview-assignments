@@ -13,7 +13,21 @@ const MenuItem: React.FC<MenuItemProps> = ({
   children,
 }: MenuItemProps): ReactElement => {
   const [isSubMenuExpanded, setIsSubMenuExpanded] = useState(false);
-  const { mouseFocus, setMouseFocus } = useDropdownButtonContext();
+  const { mouseFocus, setMouseFocus, keyBoardFocus, setKeyBoardFocus } =
+    useDropdownButtonContext();
+  const onKeyBoardFocus = keyBoardFocus?.key === itemKey;
+
+  useEffect(() => {
+    setIsSubMenuExpanded(false);
+    let item = keyBoardFocus;
+    while (item) {
+      if (item.key === itemKey) {
+        setIsSubMenuExpanded(true);
+        break;
+      }
+      item = item.parent;
+    }
+  }, [onKeyBoardFocus]);
 
   return (
     <li
@@ -39,7 +53,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
         }}
         style={{
           padding: '1rem 2rem',
-          backgroundColor: mouseFocus === itemKey ? 'blue' : 'inherit',
+          backgroundColor:
+            onKeyBoardFocus || mouseFocus === itemKey ? 'blue' : 'inherit',
         }}
       >
         {content}
