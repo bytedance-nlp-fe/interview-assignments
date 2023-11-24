@@ -18,16 +18,3 @@ body,
     rgb(250, 200, 220)
   );
 }
-
-.button {
-  background-color: white;
-  opacity: 0.7;
-  border-radius: 5px;
-  padding: 0rem 0.5rem;
-  border: none;
-}
-
-.button:hover {
-  opacity: 1;
-  border: 1px lightcyan;
-}

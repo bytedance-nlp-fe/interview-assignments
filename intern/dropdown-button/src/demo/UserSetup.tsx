@@ -42,7 +42,7 @@ export const menuList = (
 );
 
 export const button = (
-  <button className="button">
+  <button>
     <div
       style={{
         display: 'flex',
