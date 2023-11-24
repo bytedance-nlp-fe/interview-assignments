@@ -1,22 +1,18 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { ReactElement, useState } from 'react';
 import Item from '../utils/Item';
 import generateItemsGraph from '../utils/ItemsGraph';
 import { useDropdownButtonContext } from './DropdownButtonContext';
+import '../styles/Button/Button.css';
 
 type DropdownButtonWrapperProps = {
   children: ReactElement;
   content: string;
 };
 
-const defaultButtonStyle: CSSProperties = {
-  position: 'relative',
-  backgroundColor: 'white',
-  opacity: 0.7,
-  borderRadius: '5px',
-  padding: '0rem 0.5rem',
-  border: 'none',
-};
+// const defaultButtonStyle: CSSProperties = {
+
+// };
 
 const DropdownButtonWrapper: React.FC<DropdownButtonWrapperProps> = ({
   children,
@@ -30,7 +26,8 @@ const DropdownButtonWrapper: React.FC<DropdownButtonWrapperProps> = ({
 
   return (
     <button
-      style={defaultButtonStyle}
+      // style={defaultButtonStyle}
+      className="button"
       onClick={() => {
         setIsExpanded(!isExpanded);
       }}
@@ -113,38 +110,19 @@ function keyDownHandler(
   }
 }
 
+const downArrow = (
+  <svg width="12" height="12" viewBox="0 0 48 48" fill="none">
+    <path
+      d="M39.6 17.444L24.044 33 8.487 17.444"
+      stroke="#4E5969"
+      strokeWidth="2"
+    />
+  </svg>
+);
+
 const styledButton = (content: string) => (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'row',
-      alignContent: 'center',
-      backgroundColor: 'white',
-    }}
-  >
-    <div
-      style={{
-        lineHeight: '1.5rem',
-        verticalAlign: 'middle',
-      }}
-    >
-      {content}
-    </div>
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        paddingLeft: '0.5rem',
-      }}
-    >
-      <svg width="12" height="12" viewBox="0 0 48 48" fill="none">
-        <path
-          d="M39.6 17.444L24.044 33 8.487 17.444"
-          stroke="#4E5969"
-          strokeWidth="2"
-        />
-      </svg>
-    </div>
+  <div className="button-wrapper">
+    <div className="button-content">{content}</div>
+    <div className="button-suffix">{downArrow}</div>
   </div>
 );
