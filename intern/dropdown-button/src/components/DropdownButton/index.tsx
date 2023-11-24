@@ -4,16 +4,16 @@ import DropdownButtonWrapper from './components/DropdownButtonWrapper';
 
 type DropdownButtonProps = {
   children: ReactElement; //menu list
-  button: ReactElement; //custom button
+  title: string; //custom button
 };
 
 const DropdownButton: React.FC<DropdownButtonProps> = ({
   children,
-  button,
+  title,
 }: DropdownButtonProps): ReactElement => {
   return (
     <DropdownButtonContextProvider>
-      <DropdownButtonWrapper button={button}>{children}</DropdownButtonWrapper>
+      <DropdownButtonWrapper content={title}>{children}</DropdownButtonWrapper>
     </DropdownButtonContextProvider>
   );
 };

@@ -5,7 +5,7 @@ import { button, menuList } from './demo/UserSetup';
 function App() {
   return (
     <div className="App">
-      <DropdownButton button={button}>{menuList}</DropdownButton>
+      <DropdownButton title={'Options'}>{menuList}</DropdownButton>
     </div>
   );
 }
