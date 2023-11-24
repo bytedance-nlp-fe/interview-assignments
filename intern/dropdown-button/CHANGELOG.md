@@ -1,3 +1,12 @@
+## [0.4.1](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.4.0...0.4.1) (2023-11-24)
+
+
+### Features
+
+* :sparkles: box default button style in component, now for users can setup button easily; todo: import user customized style ([1ab32b0](https://github.com/Fuzzyf-ace/interview-assignments/commit/1ab32b02330c440c65883390bae6e3ceecff1331))
+
+
+
 # [0.4.0](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.3.1...0.4.0) (2023-11-24)
 
 
