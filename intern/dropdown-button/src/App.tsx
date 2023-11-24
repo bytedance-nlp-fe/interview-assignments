@@ -1,6 +1,6 @@
 import './App.css';
 import DropdownButton from './components/DropdownButton';
-import { button, menuList } from './demo/UserSetup';
+import { menuList } from './demo/UserSetup';
 
 function App() {
   return (

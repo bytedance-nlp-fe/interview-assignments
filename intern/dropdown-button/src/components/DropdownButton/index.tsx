@@ -1,13 +1,20 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement } from 'react';
 import { DropdownButtonContextProvider } from './components/DropdownButtonContext';
 import DropdownButtonWrapper from './components/DropdownButtonWrapper';
+import MenuItem from './components/MenuItem';
+import MenuList from './components/MenuList';
 
 type DropdownButtonProps = {
   children: ReactElement; //menu list
   title: string; //custom button
 };
 
-const DropdownButton: React.FC<DropdownButtonProps> = ({
+type DropdownButtonComponent = React.FC<DropdownButtonProps> & {
+  MenuItem: typeof MenuItem;
+  MenuList: typeof MenuList;
+};
+
+const DropdownButton: DropdownButtonComponent = ({
   children,
   title,
 }: DropdownButtonProps): ReactElement => {
@@ -18,4 +25,6 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
   );
 };
 
+DropdownButton.MenuItem = MenuItem;
+DropdownButton.MenuList = MenuList;
 export default DropdownButton;

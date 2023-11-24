@@ -1,5 +1,4 @@
-import MenuItem from '../components/DropdownButton/components/MenuItem';
-import MenuList from '../components/DropdownButton/components/MenuList';
+import DropdownButton from '../components/DropdownButton';
 import {
   RightArrowIcon,
   StitchesIcon,
@@ -9,36 +8,43 @@ import {
 } from './Icons';
 
 export const menuList = (
-  <MenuList>
-    <MenuItem content={'New Tab'} itemKey={'New Tab'} />
-    <MenuItem content={'New Window'} itemKey={'New Window'} />
-    <MenuItem
+  <DropdownButton.MenuList>
+    <DropdownButton.MenuItem content={'New Tab'} itemKey={'New Tab'} />
+    <DropdownButton.MenuItem content={'New Window'} itemKey={'New Window'} />
+    <DropdownButton.MenuItem
       content={'Favorites'}
       suffix={RightArrowIcon}
       itemKey={'Favorites'}
     >
-      <MenuList>
-        <MenuItem content={'GitHub'} itemKey={'GitHub'} prefix={GitHubIcon} />
-        <MenuItem
+      <DropdownButton.MenuList>
+        <DropdownButton.MenuItem
+          content={'GitHub'}
+          itemKey={'GitHub'}
+          prefix={GitHubIcon}
+        />
+        <DropdownButton.MenuItem
           prefix={StitchesIcon}
           content={'Stitches'}
           itemKey={'Stitches'}
         />
-        <MenuItem
+        <DropdownButton.MenuItem
           content={'Twitter'}
           itemKey={'Twitter'}
           prefix={TwitterIcon}
         />
-      </MenuList>
-    </MenuItem>
-    <MenuItem content={'Downloads'} itemKey={'Downloads'} />
-    <MenuItem
+      </DropdownButton.MenuList>
+    </DropdownButton.MenuItem>
+    <DropdownButton.MenuItem content={'Downloads'} itemKey={'Downloads'} />
+    <DropdownButton.MenuItem
       content={'Show Toolbar'}
       itemKey={'Show Toolbar'}
       prefix={CheckIcon}
     />
-    <MenuItem content={'Show Full URLs'} itemKey={'Show Full URLs'} />
-  </MenuList>
+    <DropdownButton.MenuItem
+      content={'Show Full URLs'}
+      itemKey={'Show Full URLs'}
+    />
+  </DropdownButton.MenuList>
 );
 
 export const button = (

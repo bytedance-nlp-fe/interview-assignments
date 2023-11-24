@@ -31,7 +31,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
       }
       item = item.parent;
     }
-  }, [onKeyBoardFocus]);
+  }, [itemKey, keyBoardFocus]);
 
   return (
     <li
