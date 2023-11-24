@@ -1,3 +1,12 @@
+# [0.5.0](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.4.1...0.5.0) (2023-11-24)
+
+
+### Features
+
+* :sparkles: wrap MenuList and MenuItem in DropdownMenuButton, providing better use experience by using dot reference ([6806cc6](https://github.com/Fuzzyf-ace/interview-assignments/commit/6806cc6563ef8e6ac803b4cc6f23ba3b47cb7289))
+
+
+
 ## [0.4.1](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.4.0...0.4.1) (2023-11-24)
 
 
