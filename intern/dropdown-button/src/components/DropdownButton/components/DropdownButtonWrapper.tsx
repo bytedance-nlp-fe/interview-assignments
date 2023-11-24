@@ -43,8 +43,7 @@ const DropdownButtonWrapper: React.FC<DropdownButtonWrapperProps> = ({
     },
     clonedChildren,
   );
-
-  return <div>{wrappedButton}</div>;
+  return wrappedButton;
 };
 
 export default DropdownButtonWrapper;

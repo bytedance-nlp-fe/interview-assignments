@@ -10,7 +10,7 @@ import {
 
 export const menuList = (
   <MenuList>
-    <MenuItem content={'New Tab'} itemKey={'New Tab'}></MenuItem>
+    <MenuItem content={'New Tab'} itemKey={'New Tab'} />
     <MenuItem content={'New Window'} itemKey={'New Window'} />
     <MenuItem
       content={'Favorites'}
