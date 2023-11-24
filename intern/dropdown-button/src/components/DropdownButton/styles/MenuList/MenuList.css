@@ -1,0 +1,25 @@
+.menu-list {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: calc(100% - 0.25rem);
+  background-color: white;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+.menu-list-main {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: calc(100% - 0.25rem);
+  background-color: white;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding-top: 0.25rem;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}/*# sourceMappingURL=MenuList.css.map */

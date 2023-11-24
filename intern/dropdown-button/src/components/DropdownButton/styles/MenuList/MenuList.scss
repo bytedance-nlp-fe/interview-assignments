@@ -1,0 +1,23 @@
+@import "../_variables.scss";
+
+@mixin menu-list {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: calc(100% - $ItemMarginHorizontal);
+    background-color: white;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.menu-list {
+    @include menu-list;
+}
+
+.menu-list-main {
+    @include menu-list;
+    padding-top: 0.25rem;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
