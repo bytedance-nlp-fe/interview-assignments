@@ -1,3 +1,14 @@
+# [0.4.0](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.3.1...0.4.0) (2023-11-24)
+
+
+### Features
+
+* :art: update menulist style, now the mainMenu will be under the button ([3c1037e](https://github.com/Fuzzyf-ace/interview-assignments/commit/3c1037e1916614e37b4f4104d2208110f1193781))
+* :lipstick: add icons using svg element ([df1269d](https://github.com/Fuzzyf-ace/interview-assignments/commit/df1269d0ef6ec3a4c3837189c19f612392084bff))
+* :sparkles: add prefix and suffix for MenuItem, now can add prefix/suffix more conveniently ([650bd28](https://github.com/Fuzzyf-ace/interview-assignments/commit/650bd289fbc2fec70893784fcf3a6e3dbcde05f6))
+
+
+
 ## [0.3.1](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.3.0...0.3.1) (2023-11-23)
 
 
