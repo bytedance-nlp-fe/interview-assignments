@@ -1,9 +1,10 @@
 import { ReactElement, ReactNode, useEffect, useState } from 'react';
 import { useDropdownButtonContext } from './DropdownButtonContext';
+import '../styles/MenuItem.css';
 
 type MenuItemProps = {
   itemKey: string;
-  content: ReactNode;
+  content: string;
   prefix?: ReactNode;
   suffix?: ReactNode;
   children?: ReactElement;
@@ -20,6 +21,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   const { mouseFocus, setMouseFocus, keyBoardFocus, setKeyBoardFocus } =
     useDropdownButtonContext();
   const onKeyBoardFocus = keyBoardFocus?.key === itemKey;
+  const onSelected = mouseFocus === itemKey || onKeyBoardFocus;
 
   useEffect(() => {
     setIsSubMenuExpanded(false);
@@ -36,13 +38,9 @@ const MenuItem: React.FC<MenuItemProps> = ({
   return (
     <li
       key={itemKey}
+      className={'menu-item'}
       onMouseEnter={() => {
         setIsSubMenuExpanded(true);
-      }}
-      style={{
-        position: 'relative',
-        listStyle: 'none',
-        textAlign: 'left',
       }}
       onMouseLeave={() => {
         setIsSubMenuExpanded(false);
@@ -57,85 +55,13 @@ const MenuItem: React.FC<MenuItemProps> = ({
         onMouseLeave={() => {
           setMouseFocus(null);
         }}
-        style={{
-          padding: '0.25rem 0rem',
-          margin: '0.25rem 0.25rem',
-          display: 'flex',
-          flexDirection: 'row',
-          borderRadius: '5px',
-          backgroundColor:
-            onKeyBoardFocus || mouseFocus === itemKey ? 'blue' : 'inherit',
-        }}
-      >
-        {
-          <div
-            style={
-              onKeyBoardFocus || mouseFocus === itemKey
-                ? {
-                    color: 'white',
-                    width: '2rem',
-                    display: 'flex',
-                    alignContent: 'center',
-                    justifyContent: 'center',
-                  }
-                : {
-                    width: '2rem',
-                    display: 'flex',
-                    alignContent: 'center',
-                    justifyContent: 'center',
-                  }
-            }
-          >
-            {prefix}
-          </div>
+        className={
+          onSelected ? 'menu-item-default-selected' : 'menu-item-default'
         }
-        <div
-          style={{
-            flex: 'auto',
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-          }}
-        >
-          <div
-            style={
-              onKeyBoardFocus || mouseFocus === itemKey
-                ? {
-                    flex: 'auto',
-                    width: 'max-content',
-                    color: 'white',
-                  }
-                : {
-                    flex: 'auto',
-                    width: 'max-content',
-                  }
-            }
-          >
-            {content}
-          </div>
-          {
-            <div
-              style={
-                onKeyBoardFocus || mouseFocus === itemKey
-                  ? {
-                      width: '2rem',
-                      display: 'flex',
-                      alignContent: 'center',
-                      justifyContent: 'center',
-                      color: 'white',
-                    }
-                  : {
-                      width: '2rem',
-                      display: 'flex',
-                      alignContent: 'center',
-                      justifyContent: 'center',
-                    }
-              }
-            >
-              {suffix}
-            </div>
-          }
-        </div>
+      >
+        {<div className={'menu-item-prefix'}>{prefix}</div>}
+        <div className="menu-item-content">{content}</div>
+        {<div className={'menu-item-suffix'}>{suffix}</div>}
       </div>
       {isSubMenuExpanded && children}
     </li>

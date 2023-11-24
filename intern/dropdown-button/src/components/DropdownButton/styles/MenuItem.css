@@ -1,0 +1,61 @@
+.menu-item {
+  position: relative;
+  list-style: none;
+  text-align: left;
+}
+
+.menu-item-default {
+  padding: 0.25rem 0rem;
+  margin: 0.25rem 0.25rem;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+}
+.menu-item-default .menu-item-prefix {
+  width: 2rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.menu-item-default .menu-item-content {
+  flex: auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.menu-item-default .menu-item-suffix {
+  width: 2rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.menu-item-default-selected {
+  padding: 0.25rem 0rem;
+  margin: 0.25rem 0.25rem;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  background-color: blue;
+}
+.menu-item-default-selected .menu-item-prefix {
+  width: 2rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  color: white;
+}
+.menu-item-default-selected .menu-item-content {
+  flex: auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  color: white;
+}
+.menu-item-default-selected .menu-item-suffix {
+  width: 2rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  color: white;
+}/*# sourceMappingURL=MenuItem.css.map */
