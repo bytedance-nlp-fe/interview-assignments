@@ -1,23 +1,35 @@
-@import "../_variables.scss";
+@import '../_variables.scss';
 
 @mixin menu-list {
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    top: 0;
-    left: calc(100% - $ItemMarginHorizontal);
-    background-color: white;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: calc(100% - $ItemMarginHorizontal);
+  background-color: white;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 }
 .menu-list {
-    @include menu-list;
+  @include menu-list;
 }
 
 .menu-list-main {
-    @include menu-list;
-    padding-top: 0.25rem;
-    top: 100%;
+  @include menu-list;
+  padding-top: 0.25rem;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+
+  .menu-list-main-triangle {
+    position: absolute;
+    top: -0.5rem;
     left: 50%;
     transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid white;
+  }
 }

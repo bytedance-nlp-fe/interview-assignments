@@ -11,7 +11,10 @@ const MenuList: React.FC<MenuListProps> = ({
   isMainMenu,
 }: MenuListProps): ReactElement => {
   return (
-    <ul className={isMainMenu ? 'menu-list-main' : 'menu-list'}>{children}</ul>
+    <ul className={isMainMenu ? 'menu-list-main' : 'menu-list'}>
+      {children}
+      {isMainMenu ? <div className="menu-list-main-triangle"></div> : null}
+    </ul>
   );
 };
 

@@ -19,7 +19,18 @@
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   padding-top: 0.25rem;
-  top: 100%;
+  top: calc(100% + 0.5rem);
   left: 50%;
   transform: translateX(-50%);
+}
+.menu-list-main .menu-list-main-triangle {
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid white;
 }/*# sourceMappingURL=MenuList.css.map */
