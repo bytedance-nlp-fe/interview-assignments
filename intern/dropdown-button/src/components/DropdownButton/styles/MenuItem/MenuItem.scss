@@ -1,64 +1,63 @@
 @import './_variables.scss';
 
-@mixin menu-item-default{
-    padding: 0.25rem 0rem;
-    margin: $ItemMarginVertical $ItemMarginHorizontal;
-    display: flex;
-    flex-direction: row;
-    border-radius: 5px;
+@mixin menu-item-default {
+  padding: 0.25rem 0rem;
+  margin: $ItemMarginVertical $ItemMarginHorizontal;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
 }
 
 @mixin menu-item-prefix {
-    width: 2rem;
-    display: flex;
-    align-content: center;
-    justify-content: center;
+  width: 2rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 @mixin menu-item-content {
-    flex: auto;
-    width: max-content;
+  flex: auto;
+  width: max-content;
 }
 
 @mixin menu-item-suffix {
-    width: 2rem;
-    display: flex;
-    align-content: center;
-    justify-content: center;
+  width: 2rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 .menu-item {
-    position: relative;
-    list-style: none;
-    text-align: left;
+  position: relative;
+  list-style: none;
+  text-align: left;
 }
-    
+
 .menu-item-default {
-    @include menu-item-default;
-    .menu-item-prefix {
-        @include menu-item-prefix;
-    }
-    .menu-item-content {
-        @include menu-item-content;
-    }
-    .menu-item-suffix {
-        @include menu-item-suffix;
-    }
+  @include menu-item-default;
+  .menu-item-prefix {
+    @include menu-item-prefix;
+  }
+  .menu-item-content {
+    @include menu-item-content;
+  }
+  .menu-item-suffix {
+    @include menu-item-suffix;
+  }
 }
 
 .menu-item-default-selected {
-    @include menu-item-default;
-    background-color: blue;
-    .menu-item-prefix {
-        @include menu-item-prefix;
-        color: white;
-    }
-    .menu-item-content {
-        @include menu-item-content;
-        color: white;
-    }
-    .menu-item-suffix {
-        @include menu-item-suffix;
-        color: white;
-    }
+  @include menu-item-default;
+  background-color: blue;
+  .menu-item-prefix {
+    @include menu-item-prefix;
+    color: white;
+  }
+  .menu-item-content {
+    @include menu-item-content;
+    color: white;
+  }
+  .menu-item-suffix {
+    @include menu-item-suffix;
+    color: white;
+  }
 }
-
