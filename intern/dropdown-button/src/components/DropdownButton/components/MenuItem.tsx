@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode, useEffect, useState } from 'react';
 import { useDropdownButtonContext } from './DropdownButtonContext';
-import '../styles/MenuItem.css';
+import '../styles/MenuItem/MenuItem.css';
 
 type MenuItemProps = {
   itemKey: string;
