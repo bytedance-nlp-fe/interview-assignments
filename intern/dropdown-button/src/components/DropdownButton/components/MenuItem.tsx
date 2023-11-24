@@ -4,12 +4,16 @@ import { useDropdownButtonContext } from './DropdownButtonContext';
 type MenuItemProps = {
   itemKey: string;
   content: ReactNode;
+  prefix?: ReactNode;
+  suffix?: ReactNode;
   children?: ReactElement;
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({
   itemKey,
   content,
+  prefix,
+  suffix,
   children,
 }: MenuItemProps): ReactElement => {
   const [isSubMenuExpanded, setIsSubMenuExpanded] = useState(false);
@@ -38,6 +42,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
       style={{
         position: 'relative',
         listStyle: 'none',
+        textAlign: 'left',
       }}
       onMouseLeave={() => {
         setIsSubMenuExpanded(false);
@@ -53,12 +58,84 @@ const MenuItem: React.FC<MenuItemProps> = ({
           setMouseFocus(null);
         }}
         style={{
-          padding: '1rem 2rem',
+          padding: '0.25rem 0rem',
+          margin: '0.25rem 0.25rem',
+          display: 'flex',
+          flexDirection: 'row',
+          borderRadius: '5px',
           backgroundColor:
             onKeyBoardFocus || mouseFocus === itemKey ? 'blue' : 'inherit',
         }}
       >
-        {content}
+        {
+          <div
+            style={
+              onKeyBoardFocus || mouseFocus === itemKey
+                ? {
+                    color: 'white',
+                    width: '2rem',
+                    display: 'flex',
+                    alignContent: 'center',
+                    justifyContent: 'center',
+                  }
+                : {
+                    width: '2rem',
+                    display: 'flex',
+                    alignContent: 'center',
+                    justifyContent: 'center',
+                  }
+            }
+          >
+            {prefix}
+          </div>
+        }
+        <div
+          style={{
+            flex: 'auto',
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}
+        >
+          <div
+            style={
+              onKeyBoardFocus || mouseFocus === itemKey
+                ? {
+                    flex: 'auto',
+                    width: 'max-content',
+                    color: 'white',
+                  }
+                : {
+                    flex: 'auto',
+                    width: 'max-content',
+                  }
+            }
+          >
+            {content}
+          </div>
+          {
+            <div
+              style={
+                onKeyBoardFocus || mouseFocus === itemKey
+                  ? {
+                      width: '2rem',
+                      display: 'flex',
+                      alignContent: 'center',
+                      justifyContent: 'center',
+                      color: 'white',
+                    }
+                  : {
+                      width: '2rem',
+                      display: 'flex',
+                      alignContent: 'center',
+                      justifyContent: 'center',
+                    }
+              }
+            >
+              {suffix}
+            </div>
+          }
+        </div>
       </div>
       {isSubMenuExpanded && children}
     </li>
