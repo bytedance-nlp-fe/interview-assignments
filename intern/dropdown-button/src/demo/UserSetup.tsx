@@ -11,6 +11,7 @@ export const menuList = (
   <DropdownButton.MenuList>
     <DropdownButton.MenuItem content={'New Tab'} itemKey={'New Tab'} />
     <DropdownButton.MenuItem content={'New Window'} itemKey={'New Window'} />
+    <DropdownButton.MenuDivider />
     <DropdownButton.MenuItem
       content={'Favorites'}
       suffix={RightArrowIcon}
@@ -35,6 +36,7 @@ export const menuList = (
       </DropdownButton.MenuList>
     </DropdownButton.MenuItem>
     <DropdownButton.MenuItem content={'Downloads'} itemKey={'Downloads'} />
+    <DropdownButton.MenuDivider />
     <DropdownButton.MenuItem
       content={'Show Toolbar'}
       itemKey={'Show Toolbar'}

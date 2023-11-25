@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import { DropdownButtonContextProvider } from './components/DropdownButtonContext';
 import DropdownButtonWrapper from './components/DropdownButtonWrapper';
+import { MenuDivider } from './components/MenuDivider';
 import MenuItem from './components/MenuItem';
 import MenuList from './components/MenuList';
 
@@ -12,6 +13,7 @@ type DropdownButtonProps = {
 type DropdownButtonComponent = React.FC<DropdownButtonProps> & {
   MenuItem: typeof MenuItem;
   MenuList: typeof MenuList;
+  MenuDivider: typeof MenuDivider;
 };
 
 const DropdownButton: DropdownButtonComponent = ({
@@ -27,4 +29,5 @@ const DropdownButton: DropdownButtonComponent = ({
 
 DropdownButton.MenuItem = MenuItem;
 DropdownButton.MenuList = MenuList;
+DropdownButton.MenuDivider = MenuDivider;
 export default DropdownButton;
