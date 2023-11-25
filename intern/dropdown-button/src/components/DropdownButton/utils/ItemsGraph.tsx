@@ -1,8 +1,15 @@
+import React from 'react';
 import { ReactElement } from 'react';
+import { MenuDivider } from '../components/MenuDivider';
 import Item from './Item';
 
-export default function generateItemsGraph(elements: ReactElement): Item[] {
-  const tree = generateItemsTree(elements, null);
+export default function generateItemsGraph(menulist: ReactElement): Item[] {
+  const dividerFilteredMenu = React.cloneElement(menulist, {
+    children: menulist.props.children.filter((element: ReactElement) => {
+      return element.type !== MenuDivider;
+    }),
+  });
+  const tree = generateItemsTree(dividerFilteredMenu, null);
   //connect siblings
   connectSibling(tree);
   return tree;
