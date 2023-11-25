@@ -55,9 +55,9 @@ const MenuItem: React.FC<MenuItemProps> = ({
         onMouseLeave={() => {
           setMouseFocus(null);
         }}
-        className={
+        className={`${
           onSelected ? 'menu-item-default-selected' : 'menu-item-default'
-        }
+        } ${isSubMenuExpanded ? 'submenu-expanded' : ''}`}
       >
         {<div className={'menu-item-prefix'}>{prefix}</div>}
         <div className="menu-item-content">{content}</div>
