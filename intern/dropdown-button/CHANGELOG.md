@@ -1,3 +1,18 @@
+## [0.5.2](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.5.0...0.5.2) (2023-11-25)
+
+
+### Bug Fixes
+
+* :bug: addjust ui, now the hover color will turn grey when submenu is expanded ([327331f](https://github.com/Fuzzyf-ace/interview-assignments/commit/327331f3b0b1ee7ce8157f79088412ab92052cb8))
+* :bug: filter out MenuDividers from MenuList when generating graph, now keyboard will not focus on dividers ([cb925de](https://github.com/Fuzzyf-ace/interview-assignments/commit/cb925de44af96153692d393f5fc36aa9d292bb88))
+
+
+### Features
+
+* :sparkles: add MenuDivider, now can add divider between menu items ([01cf9ad](https://github.com/Fuzzyf-ace/interview-assignments/commit/01cf9ad6b0b2d98fc35a077fbba5e8e35288a4f1))
+
+
+
 ## [0.5.1](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.5.0...0.5.1) (2023-11-25)
 
 
