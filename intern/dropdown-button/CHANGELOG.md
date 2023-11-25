@@ -1,3 +1,12 @@
+## [0.5.1](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.5.0...0.5.1) (2023-11-25)
+
+
+### Features
+
+* :sparkles: add MenuDivider, now can add divider between menu items ([01cf9ad](https://github.com/Fuzzyf-ace/interview-assignments/commit/01cf9ad6b0b2d98fc35a077fbba5e8e35288a4f1))
+
+
+
 # [0.5.0](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.4.1...0.5.0) (2023-11-24)
 
 
