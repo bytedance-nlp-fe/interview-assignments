@@ -1,3 +1,12 @@
+## [0.5.3](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.5.2...0.5.3) (2023-11-26)
+
+
+### Bug Fixes
+
+* :bug: now the keyboardfocus will be set to null when open/close the menu ([44091c0](https://github.com/Fuzzyf-ace/interview-assignments/commit/44091c0e62ed72a66436821f9eda74fe85a87f6a))
+
+
+
 ## [0.5.2](https://github.com/Fuzzyf-ace/interview-assignments/compare/0.5.0...0.5.2) (2023-11-25)
 
 
