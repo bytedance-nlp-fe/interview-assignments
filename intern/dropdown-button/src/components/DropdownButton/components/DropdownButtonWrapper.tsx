@@ -10,10 +10,6 @@ type DropdownButtonWrapperProps = {
   content: string;
 };
 
-// const defaultButtonStyle: CSSProperties = {
-
-// };
-
 const DropdownButtonWrapper: React.FC<DropdownButtonWrapperProps> = ({
   children,
   content,
@@ -26,10 +22,10 @@ const DropdownButtonWrapper: React.FC<DropdownButtonWrapperProps> = ({
 
   return (
     <button
-      // style={defaultButtonStyle}
       className="button"
       onClick={() => {
         setIsExpanded(!isExpanded);
+        setKeyBoardFocus(null);
       }}
       onKeyDown={event =>
         keyDownHandler(
