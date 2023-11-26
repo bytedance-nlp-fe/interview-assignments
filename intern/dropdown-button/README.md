@@ -1,46 +1,77 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dropdown Button
+[📄 Changelog here](./CHANGELOG.md)
 
-## Available Scripts
+##  Approach
 
-In the project directory, you can run:
+Mouse Navigation:
+- Use onMouseMove and onMouseLeave to set the focused item and toggle the menu list expansion
 
-### `npm start`
+Key Board Navigation:
+- Use Context to pass the keyboard focused item to the menu item
+- Generate an item graph to store the relationship between the menu items
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Felexibility
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- DropdownButton
+  - the title of the button
+- DropdownButton.MenuList
+  - the number of the menu items
+  - divider between any menu items
+-  DropdownButton.MenuItem
+   - the prefix, content, suffix of the menu item
+   - the submenu of this current menu item
 
-### `npm test`
+## Todo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The following features should be implemented for a polished DropdownButton component:
+- [ ] Add OnClick event handler for the menu item
+- [ ] Enable styles customization for the menu item by adding more styles in scss file
 
-### `npm run build`
+## Usage Example
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+``` javascript
+import DropdownButton from './components/DropdownButton';
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<DropdownButton title={'Options'}>
+  <DropdownButton.MenuList>
+    <DropdownButton.MenuItem content={'New Tab'} itemKey={'New Tab'} />
+    <DropdownButton.MenuItem content={'New Window'} itemKey={'New Window'} />
+    <DropdownButton.MenuDivider />
+    <DropdownButton.MenuItem
+      content={'Favorites'}
+      suffix={RightArrowIcon}
+      itemKey={'Favorites'}
+    >
+      <DropdownButton.MenuList>
+        <DropdownButton.MenuItem
+          content={'GitHub'}
+          itemKey={'GitHub'}
+          prefix={GitHubIcon}
+        />
+        <DropdownButton.MenuItem
+          prefix={StitchesIcon}
+          content={'Stitches'}
+          itemKey={'Stitches'}
+        />
+        <DropdownButton.MenuItem
+          content={'Twitter'}
+          itemKey={'Twitter'}
+          prefix={TwitterIcon}
+        />
+      </DropdownButton.MenuList>
+    </DropdownButton.MenuItem>
+    <DropdownButton.MenuItem content={'Downloads'} itemKey={'Downloads'} />
+    <DropdownButton.MenuDivider />
+    <DropdownButton.MenuItem
+      content={'Show Toolbar'}
+      itemKey={'Show Toolbar'}
+      prefix={CheckIcon}
+    />
+    <DropdownButton.MenuItem
+      content={'Show Full URLs'}
+      itemKey={'Show Full URLs'}
+    />
+  </DropdownButton.MenuList>
+</DropdownButton>
+```
